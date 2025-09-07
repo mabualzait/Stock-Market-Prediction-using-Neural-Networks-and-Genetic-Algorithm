@@ -1,7 +1,7 @@
 function perf = BackPropAlgo(u)
 %% Stock Market Prediction using Simple Neural Networks
 
-fileID = fopen('...\stock_market_train.csv');
+fileID = fopen('stock_market_train.csv');
 fgetl(fileID);
 
 C=textscan(fileID,'%s %f %f %f %f','delimiter',',');
