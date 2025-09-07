@@ -9,6 +9,32 @@ In this project, we have proposed a stock market prediction model using Genetic 
 The usage of neural networks for prediction is advantageous as they are able to learn from examples only and after their learning is finished, they are able to catch hidden and strongly non-linear dependencies, even when there is a significant noise in the training set.Genetic Algorithms are more suited for optimization problems. Hence, it is used to optimize the parameters of the Neural Network for more accurate predictions.
 A programming language must be combined with special tools that support the task that has to be performed, whether one is modelling data or analysing an image. Therefore, for this project, MATLAB is used as the MATLAB toolboxes offer professionally developed, rigorously tested and fully documented functionality for scientific and engineering applications.
 
+## Quickstart (Python CLI)
+
+The original MATLAB workflow is preserved, but a lightweight Python CLI is included for easy, fast predictions and trading signals using the provided CSVs.
+
+1) Install dependencies (uses only NumPy for portability):
+
+```
+python3 -m venv .venv && . .venv/bin/activate
+pip install numpy==1.26.4
+```
+
+2) Run predictions and generate signals:
+
+```
+python predict.py --train_csv stock_market_train.csv \
+                  --test_csv stock_market_test.csv \
+                  --out_csv signals.csv \
+                  --up_thresh 0.005 --down_thresh 0.005
+```
+
+This writes `signals.csv` with columns: `Date, Close, Return_next, Predicted_Close_next, Predicted_Return_next, Signal`.
+
+Notes:
+- `--up_thresh` and `--down_thresh` control BUY/SELL sensitivity on predicted next‑day return (e.g., 0.002 for 0.2%).
+- The Python implementation computes SMA/EMA on Close and fits a simple linear model for next‑day Close; it is dependency‑minimal and runs quickly.
+
 ## 2.	Background
 
 ### 2.1.	Neural Network
