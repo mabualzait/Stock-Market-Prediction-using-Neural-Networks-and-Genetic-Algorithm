@@ -2,7 +2,7 @@
 %% Final Output Plotting Function
 
 % opening the training test data
-fileID = fopen('... \stock_market_train.csv');
+fileID = fopen('stock_market_train.csv');
 fgetl(fileID); 
 
 % delimitting the various sub-fields
@@ -67,13 +67,13 @@ plot(x, Close, x, Open, x, High, x, Low);
 %% Testing the constructed neural network
 
 % Opening sample test data
-fileID = fopen('C:\Users\Shikhar\Desktop\stock_market_test_final.csv');
+fileID = fopen('stock_market_test_final.csv');
 fgetl(fileID);
 C_t = textscan(fileID,'%s %f %f %f %f','delimiter',',');
 fclose(fileID);
 
 Open_t = cell2mat(C_t(1, 2));
-Open_t = Open2.';
+Open_t = Open_t.';
 High_t = cell2mat(C_t(1, 3));
 High_t = High_t.';
 Low_t = cell2mat(C_t(1, 4));
@@ -87,7 +87,6 @@ EMA_50_t = tsmovavg(Open_t, 'e', 50);
 
 Input_t = {Open_t; High_t; Low_t; SMA_10_t; EMA_10_t; SMA_50_t; EMA_50_t};
 
-Open_t = cell2mat(C_t(1,2));
 Input_t = cell2mat(Input_t);
 
 % Plotting the final output graph 
